@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1080" height="1080" viewBox="0 0 1080 1080" xml:space="preserve">
+<desc>Created with Fabric.js 5.2.4</desc>
+<defs>
+</defs>
+<g transform="matrix(1 0 0 1 540 540)" id="9d3879c8-2b29-4437-9915-cf88b32059c9"  >
+</g>
+<g transform="matrix(1 0 0 1 540 540)" id="7e46ea81-f20e-4beb-9336-84581cf94d3b"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;" vector-effect="non-scaling-stroke"  x="-540" y="-540" rx="0" ry="0" width="1080" height="1080" />
+</g>
+<g transform="matrix(11.07 0 0 7.52 539.97 689.98)" id="e4b8fc44-13ed-4213-80f3-b79c7adc121c"  >
+<circle style="stroke: rgb(255,255,255); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  cx="0" cy="0" r="35" />
+</g>
+<g transform="matrix(10.95 0 0 4.02 540.03 723.69)" id="9683e77b-5d28-4bd5-84c8-de662afe1f7d"  >
+<circle style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(101,101,101); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  cx="0" cy="0" r="35" />
+</g>
+<g transform="matrix(0 0 0 0 0 0)"  >
+<g style=""   >
+</g>
+</g>
+<g transform="matrix(1 0 0 1 723.14 669.28)" id="a249c026-69fc-42d6-aeac-e01a8a0c6154"  >
+<circle style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(151,151,151); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  cx="0" cy="0" r="35" />
+</g>
+<g transform="matrix(1.78 0 0 1.78 772.93 438.63)"  >
+<path style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(101,101,101); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-49, -49.5)" d="M 76.208 78.885 C 81.17099999999999 78.885 85.214 74.78 85.214 69.821 L 85.214 21.8 C 85.214 16.838 81.17099999999999 12.796000000000001 76.208 12.796000000000001 L 28.19 12.796000000000001 C 23.227 12.796000000000001 19.125 16.838 19.125 21.8 C 19.37 28.537 36.025999999999996 30.987000000000002 47.912 36.193 L 14.53 69.575 C 12.203999999999999 71.9 12.203999999999999 75.699 14.53 78.02600000000001 L 20.961 84.45800000000001 C 23.290999999999997 86.78500000000001 27.084999999999997 86.78500000000001 29.413999999999998 84.45800000000001 L 62.43 51.505 C 67.084 63.021 69.409 78.026 76.208 78.885 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(-1.84 0 0 1.78 296.23 443.25)"  >
+<path style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(101,101,101); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-49, -49.5)" d="M 76.208 78.885 C 81.17099999999999 78.885 85.214 74.78 85.214 69.821 L 85.214 21.8 C 85.214 16.838 81.17099999999999 12.796000000000001 76.208 12.796000000000001 L 28.19 12.796000000000001 C 23.227 12.796000000000001 19.125 16.838 19.125 21.8 C 19.37 28.537 36.025999999999996 30.987000000000002 47.912 36.193 L 14.53 69.575 C 12.203999999999999 71.9 12.203999999999999 75.699 14.53 78.02600000000001 L 20.961 84.45800000000001 C 23.290999999999997 86.78500000000001 27.084999999999997 86.78500000000001 29.413999999999998 84.45800000000001 L 62.43 51.505 C 67.084 63.021 69.409 78.026 76.208 78.885 z" stroke-linecap="round" />
+</g>
+</svg>
