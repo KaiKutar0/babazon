@@ -1,3 +1,4 @@
+import { Container } from "@mui/material";
 import { title } from "process";
 import React, { PropsWithChildren } from "react";
 
@@ -25,7 +26,6 @@ function Section({
       >
         {children}
       </div>
-      <button>next</button>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import React from "react";
 
 function Footer() {
@@ -12,7 +13,11 @@ function Footer() {
         alignItems: "center",
         gap: 10,
       }}
-    ></div>
+    >
+      <Typography color="#FFFFFF" variant="h3">
+        Yurii Vasylchenko 2024
+      </Typography>
+    </div>
   );
 }
 

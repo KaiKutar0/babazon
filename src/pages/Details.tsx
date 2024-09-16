@@ -4,10 +4,13 @@ import { useParams } from "react-router-dom";
 import { Button, TextField } from "@mui/material";
 import comments from "../comments.json";
 import Comment from "../components/Comment";
+import { useAppDispatch } from "../app/hooks";
+import { decrement, increment } from "../app/cartSlice";
 
 function Details() {
   const { id } = useParams();
   const item = data.filter((i) => i.id.toString() === id?.replace(":", ""))[0];
+  const dispatch = useAppDispatch();
 
   return (
     <div
@@ -30,7 +33,10 @@ function Details() {
           {/* make an another variant of <Item/>*/}
           <img height={600} width={440} src={item.image} />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <Button variant="contained" onClick={() => {}}>
+            <Button
+              variant="contained"
+              onClick={() => dispatch(increment(item))}
+            >
               Add
             </Button>
           </div>

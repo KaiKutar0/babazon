@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Section from "../components/Section";
 import Item from "../components/Item";
 import data from "../data.json";
-import { Button } from "@mui/material";
 
 function Home() {
   return (

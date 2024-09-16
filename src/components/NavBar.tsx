@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "../img/logo.svg";
-import shoppingCart from "../img/shopping-cart.svg";
 import { useNavigate } from "react-router-dom";
-
+import { Autocomplete, Badge, Box, TextField } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import data from "../data.json";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { increment } from "../app/cartSlice";
 function NavBar() {
   const navigate = useNavigate();
-  const [cart, setCart] = useState(0);
-  useEffect(() => {
-    setCart(sessionStorage.length);
-  }, [sessionStorage]);
+  const cartItems = useAppSelector((state) => state.cart.items.length);
+
   return (
     <div
       style={{
@@ -27,38 +28,27 @@ function NavBar() {
           justifyContent: "center",
           fontSize: 32,
           fontWeight: 800,
+          cursor: "pointer",
           color: "#FFFFFF",
         }}
+        onClick={() => navigate("/")}
       >
         <div>
-          <img height={80} src={logo} alt="" onClick={() => navigate("/")} />
+          <img height={80} src={logo} alt="" />
         </div>
 
         <p>Babazon</p>
       </div>
-      <div
-        style={{
-          width: "710px",
-          height: "50px",
-          borderRadius: 10,
-          backgroundColor: "#ECECEC",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          fontSize: 24,
-          fontWeight: 800,
-          color: "#000000",
-        }}
-      >
-        <p>search...</p>
-        <div
-          style={{
-            width: "110px",
-            height: "50px",
-            borderRadius: 10,
-            backgroundColor: "#FEB82F",
+      <div>
+        <Autocomplete
+          sx={{ width: 720, backgroundColor: "#ECECEC" }}
+          options={data.map((i) => ({ label: i.name, id: i.id }))}
+          renderInput={(params) => <TextField {...params} />}
+          // value={}
+          onChange={(_, i) => {
+            i && navigate(`/details/${i.id}`);
           }}
-        ></div>
+        />
       </div>
 
       <div
@@ -78,28 +68,20 @@ function NavBar() {
             alignItems: "center",
           }}
         >
-          {cart > 0 && (
-            <div
-              style={{
-                width: "17px",
-                height: "17px",
-                backgroundColor: "#FFFFFF",
-                borderRadius: 100,
-                fontSize: "16px",
-                color: "#000000",
-                textAlign: "center",
-                float: "left",
-                position: "relative",
-                left: "25px",
-                bottom: "18px",
-                zIndex: 1,
-              }}
-            >
-              {cart}
-            </div>
-          )}
-
-          <img width={35} height={35} src={shoppingCart} alt="" />
+          <Badge
+            badgeContent={cartItems}
+            color="info"
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
+            <ShoppingCartIcon
+              sx={{ cursor: "pointer" }}
+              fontSize="large"
+              onClick={() => navigate("/cart")}
+            />
+          </Badge>
         </div>
         <p>Log In</p>
         <p>Sign Up</p>
