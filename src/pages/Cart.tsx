@@ -22,20 +22,35 @@ function Cart() {
           <Tile item={i} key={index} />
         ))}
       </Stack>
-      <Box padding="2vh 5vh 0vh 5vh">
-        <Typography variant="h3" fontWeight="bold">
-          Total: {cart.reduce((sum, i) => sum + i.price, 0)}
+      {cart.length > 0 ? (
+        <Box
+          sx={{
+            padding: "2vh 5vh 0vh 5vh",
+            marginBottom: "auto",
+          }}
+        >
+          <Typography variant="h3" fontWeight="bold">
+            Total: {cart.reduce((sum, i) => sum + i.price, 0)}
+          </Typography>
+          <Stack direction="row">
+            <Button variant="contained" size="large">
+              Buy
+            </Button>
+            <Box flex={1}></Box>
+            <Button
+              color="error"
+              size="large"
+              onClick={() => dispatch(reset())}
+            >
+              Remove All
+            </Button>
+          </Stack>
+        </Box>
+      ) : (
+        <Typography variant="h3" fontWeight="bold" textAlign="center">
+          Empty
         </Typography>
-        <Stack direction="row">
-          <Button variant="contained" size="large">
-            Buy
-          </Button>
-          <Box flex={1}></Box>
-          <Button color="error" size="large" onClick={() => dispatch(reset())}>
-            Remove All
-          </Button>
-        </Stack>
-      </Box>
+      )}
     </Page>
   );
 }
@@ -61,7 +76,6 @@ function Tile({
           <Typography variant="h5" fontWeight="bold">
             {item.name}
           </Typography>
-          <Typography>count: 1</Typography>
         </Box>
         <Box flex={1}></Box>
         <Box minWidth={200}>

@@ -20,7 +20,11 @@ function Page({
         {title}
       </Typography>
       <Box
-        sx={{ backgroundColor: "#F7F7F7", height: "100%", padding: "5vh 0vh" }}
+        sx={{
+          backgroundColor: "#F7F7F7",
+          minHeight: "100%",
+          padding: "5vh 0vh",
+        }}
       >
         {children}
       </Box>
