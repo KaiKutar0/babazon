@@ -1,7 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import logo from "../img/logo.svg";
 import { useNavigate } from "react-router-dom";
-import { Autocomplete, Badge, Box, TextField } from "@mui/material";
+import {
+  AppBar,
+  Autocomplete,
+  Avatar,
+  Badge,
+  Box,
+  Button,
+  IconButton,
+  Stack,
+  TextField,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import data from "../data.json";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
@@ -11,91 +23,68 @@ function NavBar() {
   const cartItems = useAppSelector((state) => state.cart.items.length);
 
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "95px",
-        backgroundColor: "#414141",
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-        gap: 10,
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          fontSize: 32,
-          fontWeight: 800,
-          cursor: "pointer",
-          color: "#FFFFFF",
-        }}
-        onClick={() => navigate("/")}
-      >
-        <div>
-          <img height={80} src={logo} alt="" />
-        </div>
-
-        <p>Babazon</p>
-      </div>
-      <div>
-        <Autocomplete
-          sx={{ width: 720, backgroundColor: "#ECECEC" }}
-          options={data.map((i) => ({ label: i.name, id: i.id }))}
-          renderInput={(params) => <TextField {...params} />}
-          // value={}
-          onChange={(_, i) => {
-            i && navigate(`/details/${i.id}`);
-          }}
-        />
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          gap: 10,
-          justifyContent: "center",
-          fontSize: 24,
-          fontWeight: 800,
-          color: "#FFFFFF",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Badge
-            badgeContent={cartItems}
-            color="info"
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
+    <Box flexGrow={1}>
+      <AppBar position="static">
+        <Toolbar>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              cursor: "pointer",
             }}
+            onClick={() => navigate("/")}
           >
-            <ShoppingCartIcon
-              sx={{ cursor: "pointer" }}
-              fontSize="large"
-              onClick={() => navigate("/cart")}
-            />
-          </Badge>
-        </div>
-        <p>Log In</p>
-        <p>Sign Up</p>
-      </div>
+            <Box>
+              <img height={80} width={80} src={logo} alt="" />
+            </Box>
 
-      <div
-        style={{
-          width: "55px",
-          height: "55px",
-          borderRadius: 100,
-          backgroundColor: "#EFEFEF",
-        }}
-      ></div>
-    </div>
+            <Box display="flex" alignItems="center">
+              <Typography variant="h3">Babazon</Typography>
+            </Box>
+          </Box>
+          <Box flexGrow={1}></Box>
+          <Box>
+            {/* move to separate component */}
+            <Autocomplete
+              sx={{ width: 720 }}
+              aria-placeholder="Type to search..."
+              options={data.map((i) => ({ label: i.name, id: i.id }))}
+              renderInput={(params) => <TextField {...params} />}
+              //value={}
+              onChange={(_, i) => {
+                i && navigate(`/details/${i.id}`);
+              }}
+            />
+          </Box>
+
+          <Box flexGrow={1}></Box>
+          <Box>
+            <Stack direction="row" alignItems="center">
+              <IconButton size="large" color="inherit">
+                <Badge
+                  color="secondary"
+                  badgeContent={cartItems}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                >
+                  <ShoppingCartIcon
+                    sx={{ cursor: "pointer" }}
+                    fontSize="large"
+                    onClick={() => navigate("/cart")}
+                  />
+                </Badge>
+              </IconButton>
+              <Button color="inherit">Log In</Button>
+              <Button color="inherit">Sign Up</Button>
+              <Avatar className="" />
+            </Stack>
+          </Box>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 }
 
