@@ -1,4 +1,4 @@
-import { Button, Card } from "@mui/material";
+import { Box, Button, Card, Divider, Stack, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { increment } from "../app/cartSlice";
@@ -18,28 +18,40 @@ function Item({
 
   return (
     <Card
-      style={{
-        width: "200px",
-        height: "400px",
-        backgroundColor: "#F7F7F7",
+      sx={{
+        width: "25vh",
+        height: "45vh",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
-      <img width={200} height={200} src={item.image} />
-      <div style={{ padding: "0px 10px" }}>
-        <p>{item.name}</p>
-        <p>{item.price + "$"}</p>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      >
+        <img style={{ width: "22.5vh" }} src={item.image} />
+      </Box>
+      <Box flex={1}></Box>
+      <Divider />
+      <Box>
+        <Typography>{item.name}</Typography>
+        <Divider />
+        <Typography>Price: {item.price + "$"}</Typography>
+      </Box>
+      <Box textAlign="center">
+        <Stack>
           <Button variant="contained" onClick={() => dispatch(increment(item))}>
             Add
           </Button>
+
           <Button
             variant="contained"
+            color="secondary"
             onClick={() => navigate(`/details/:${item.id}`)}
           >
             See
           </Button>
-        </div>
-      </div>
+        </Stack>
+      </Box>
     </Card>
   );
 }

@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Box, Container, Pagination, Stack, Typography } from "@mui/material";
 import { title } from "process";
 import React, { PropsWithChildren } from "react";
 
@@ -7,26 +7,28 @@ function Section({
   title,
 }: {
   title: string;
-  children: string | JSX.Element | JSX.Element[];
+  children: JSX.Element[];
 }) {
   return (
-    <div>
-      <div style={{ padding: "0px 40px" }}>
-        <h3>{title}</h3>
-      </div>
-      <div
-        style={{
-          height: "500px",
-          padding: "20px 40px",
-          backgroundColor: "#F7F7F7",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 2,
+        padding: "10px 40px",
+      }}
+    >
+      <Box>
+        <Typography variant="h6">{title}</Typography>
+      </Box>
+      <Stack direction="row" spacing={5}>
         {children}
-      </div>
-    </div>
+      </Stack>
+      <Pagination
+        count={(children.length % 5) + 1}
+        onChange={(e, value) => {}}
+      />
+    </Box>
   );
 }
 

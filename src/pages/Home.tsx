@@ -12,7 +12,11 @@ function Home() {
         ))}
       </Section>
 
-      <Section title="TOP OF THE DAY">dfjb</Section>
+      <Section title="TOP OF THE DAY">
+        {data.slice(6).map((item, i) => (
+          <Item key={i} item={item} />
+        ))}
+      </Section>
     </div>
   );
 }

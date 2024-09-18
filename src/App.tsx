@@ -7,18 +7,22 @@ import Footer from "./components/Footer";
 import Cart from "./pages/Cart";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import { ThemeProvider } from "@mui/material";
+import { theme } from "./theme";
 
 function App() {
   return (
     <React.StrictMode>
       <Provider store={store}>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/details/:id" element={<Details />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-        <Footer />
+        <ThemeProvider theme={theme}>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/details/:id" element={<Details />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+          <Footer />
+        </ThemeProvider>
       </Provider>
     </React.StrictMode>
   );
