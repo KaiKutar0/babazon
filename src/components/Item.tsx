@@ -25,10 +25,13 @@ function Item({
         flexDirection: "column",
       }}
     >
+      <Box flex={1}></Box>
       <Box
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <img style={{ width: "22.5vh" }} src={item.image} />
+        <Box>
+          <img style={{ width: "22.5vh" }} src={item.image} />
+        </Box>
       </Box>
       <Box flex={1}></Box>
       <Divider />

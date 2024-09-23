@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   Card,
+  Divider,
   Rating,
   Stack,
   TextField,
@@ -16,6 +17,7 @@ import { decrement, increment } from "../app/cartSlice";
 import Page from "../components/Page";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import { theme } from "../theme";
 
 function Details() {
   const { id } = useParams();
@@ -24,44 +26,66 @@ function Details() {
 
   return (
     <Page title="Details">
-      <Stack spacing={8} sx={{ padding: "2% 10% 10% 10%" }}>
+      <Stack spacing={8} sx={{ padding: "2% 0%" }}>
         <Stack direction="row" justifyContent="space-between">
-          <Stack>
-            <Card>
+          <Card sx={{ padding: "1.5%" }}>
+            <Box sx={{ padding: "10px 0px" }}>
               <Typography variant="h3">{item.name}</Typography>
-              <img src={item.image} />
+              <Divider />
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                padding: "20px 0px",
+              }}
+            >
+              <img width={400} height={400} src={item.image} />
+            </Box>
+            <Box>
               <Typography>Price: {item.price}</Typography>
-              <Box sx={{ padding: "2% 3% 3% 3%" }}>
-                <Button
-                  variant="contained"
-                  onClick={() => dispatch(increment(item))}
-                >
-                  Add
-                </Button>
-              </Box>
-            </Card>
-          </Stack>
-          <Stack>
-            <Card sx={{ minHight: "20vh", minWidth: "40vh" }}>
-              <Typography>{item.description}</Typography>
-            </Card>
-          </Stack>
+              <Button
+                variant="contained"
+                onClick={() => dispatch(increment(item))}
+              >
+                Add
+              </Button>
+            </Box>
+          </Card>
+          <Box flex={1}></Box>
+          <Card sx={{ flex: 1, padding: "1.5%" }}>
+            <Typography>{item.description}</Typography>
+          </Card>
         </Stack>
 
-        <Stack>
-          <Stack sx={{ padding: "5% 0% 5% 0%" }} spacing={2}>
-            <TextField multiline />
-            <Box>
-              <Button variant="outlined">Post</Button>
-            </Box>
-          </Stack>
+        <Card
+          sx={{
+            padding: "1% 1%",
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+            }}
+          >
+            <Stack spacing={1} flex={2}>
+              <TextField multiline />
+              <Box>
+                <Button variant="outlined">Post</Button>
+              </Box>
+            </Stack>
+            <Box flex={1}></Box>
+          </Box>
 
           <Stack spacing={1}>
             {comments.map((i, key) => (
               <Comment comment={i} key={key} />
             ))}
           </Stack>
-        </Stack>
+        </Card>
       </Stack>
     </Page>
   );

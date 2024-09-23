@@ -17,16 +17,18 @@ function Cart() {
 
   return (
     <Page title="Cart">
-      <Stack spacing={1.5}>
-        {cart.map((i, index) => (
-          <Tile item={i} key={index} />
-        ))}
-      </Stack>
+      <Card sx={{ padding: "1%" }}>
+        <Stack spacing={1.5}>
+          {cart.map((i, index) => (
+            <Tile item={i} key={index} />
+          ))}
+        </Stack>
+      </Card>
+
       {cart.length > 0 ? (
         <Box
           sx={{
-            padding: "2vh 5vh 0vh 5vh",
-            marginBottom: "auto",
+            padding: "2% 0%",
           }}
         >
           <Typography variant="h3" fontWeight="bold">
