@@ -17,23 +17,23 @@ function Cart() {
 
   return (
     <Page title="Cart">
-      <Card sx={{ padding: "1%" }}>
-        <Stack spacing={1.5}>
-          {cart.map((i, index) => (
-            <Tile item={i} key={index} />
-          ))}
-        </Stack>
-      </Card>
-
       {cart.length > 0 ? (
         <Box
           sx={{
             padding: "2% 0%",
           }}
         >
-          <Typography variant="h3" fontWeight="bold">
-            Total: {cart.reduce((sum, i) => sum + i.price, 0)}
-          </Typography>
+          <Card sx={{ padding: "1%" }}>
+            <Stack spacing={1.5}>
+              {cart.map((i, index) => (
+                <Tile item={i} key={index} />
+              ))}
+            </Stack>
+            <Typography variant="h3" fontWeight="bold">
+              Total: {cart.reduce((sum, i) => sum + i.price, 0)}
+            </Typography>
+          </Card>
+
           <Stack direction="row">
             <Button variant="contained" size="large">
               Buy

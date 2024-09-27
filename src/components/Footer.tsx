@@ -1,10 +1,12 @@
-import { Typography } from "@mui/material";
+import { AppBar, Box, Typography } from "@mui/material";
 import React from "react";
 
 function Footer() {
   return (
-    <div
-      style={{
+    <Box
+      sx={{
+        zIndex: (theme) => theme.zIndex.drawer + 1,
+        position: "absolute",
         width: "100%",
         height: "95px",
         backgroundColor: "#414141",
@@ -17,7 +19,7 @@ function Footer() {
       <Typography color="#FFFFFF" variant="h3">
         Yurii Vasylchenko 2024
       </Typography>
-    </div>
+    </Box>
   );
 }
 

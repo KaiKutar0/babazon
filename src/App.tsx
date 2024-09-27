@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
@@ -9,6 +9,9 @@ import { Provider } from "react-redux";
 import { store } from "./app/store";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./theme";
+import SignUp from "./pages/SignUp";
+import LogIn from "./pages/LogIn";
+import Account from "./pages/Account";
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/details/:id" element={<Details />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/log-in" element={<LogIn />} />
+            <Route path="/account" element={<Account />} />
           </Routes>
           <Footer />
         </ThemeProvider>

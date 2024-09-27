@@ -12,19 +12,24 @@ import {
   Stack,
   TextField,
   Toolbar,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import data from "../data.json";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { increment } from "../app/cartSlice";
+import { useAppSelector } from "../app/hooks";
+import Search from "./Search";
+
 function NavBar() {
   const navigate = useNavigate();
   const cartItems = useAppSelector((state) => state.cart.items.length);
 
   return (
     <Box flexGrow={1}>
-      <AppBar position="static">
+      <AppBar
+        position="sticky"
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      >
         <Toolbar>
           <Box
             sx={{
@@ -44,23 +49,12 @@ function NavBar() {
             </Box>
           </Box>
           <Box flexGrow={1}></Box>
-          <Box>
-            {/* move to separate component */}
-            <Autocomplete
-              sx={{ width: 720 }}
-              aria-placeholder="Type to search..."
-              options={data.map((i) => ({ label: i.name, id: i.id }))}
-              renderInput={(params) => <TextField {...params} />}
-              //value={}
-              onChange={(_, i) => {
-                i && navigate(`/details/${i.id}`);
-              }}
-            />
-          </Box>
+
+          <Search data={data} />
 
           <Box flexGrow={1}></Box>
           <Box>
-            <Stack direction="row" alignItems="center">
+            <Stack direction="row" alignItems="center" spacing={2}>
               <IconButton size="large" color="inherit">
                 <Badge
                   color="secondary"
@@ -77,9 +71,15 @@ function NavBar() {
                   />
                 </Badge>
               </IconButton>
-              <Button color="inherit">Log In</Button>
-              <Button color="inherit">Sign Up</Button>
-              <Avatar className="" />
+              <Button color="inherit" onClick={() => navigate("/log-in")}>
+                Log In
+              </Button>
+              <Button color="inherit" onClick={() => navigate("/sign-up")}>
+                Sign Up
+              </Button>
+              <Tooltip title="Guest">
+                <Avatar />
+              </Tooltip>
             </Stack>
           </Box>
         </Toolbar>
