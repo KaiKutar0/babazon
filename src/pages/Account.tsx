@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Page from "../components/Page";
 import {
   Box,
@@ -11,9 +11,23 @@ import {
   ListItemText,
   Toolbar,
 } from "@mui/material";
+import axios from "axios";
 
 function Account() {
-  return <Page></Page>;
+  const [message, setMessage] = useState<string>("");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/items/get")
+      .then((response) => {
+        setMessage(response.data);
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
+  }, []);
+
+  return <Page>{message}</Page>;
 }
 
 export default Account;
