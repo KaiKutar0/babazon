@@ -27,7 +27,16 @@ function Account() {
       });
   }, []);
 
-  return <Page>{message}</Page>;
+  return (
+    <Page>
+      {message}
+      <Drawer variant="permanent">
+        <Toolbar sx={{ height: 100 }} />
+        hi
+        <Toolbar sx={{ height: 250 }} />
+      </Drawer>
+    </Page>
+  );
 }
 
 export default Account;
