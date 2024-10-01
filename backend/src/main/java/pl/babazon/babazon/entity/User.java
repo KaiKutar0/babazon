@@ -1,26 +1,26 @@
 package pl.babazon.babazon.entity;
 
+import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
-public class Item {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     private String name;
-    private String description;
+    private String email;
+    private String password;
     private String image;
-    private double price;
+    private Long number;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    User user;
+    @OneToMany(mappedBy = "user")
+    List<Item> items;
 }
