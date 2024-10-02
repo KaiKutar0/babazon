@@ -9,5 +9,5 @@ import pl.babazon.babazon.entity.Item;
 
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
-    List<Item> findAllItems();
+    List<Item> findAll();
 }
