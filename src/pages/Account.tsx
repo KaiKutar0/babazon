@@ -18,6 +18,8 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PaymentIcon from "@mui/icons-material/Payment";
 import SettingsIcon from "@mui/icons-material/Settings";
 import axios from "axios";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { ActualItems, AddNewItem } from "../components/Account";
 
 function Account() {
   const [message, setMessage] = useState<string>("");
@@ -32,6 +34,8 @@ function Account() {
         console.error("There was an error!", error);
       });
   }, []);
+
+  const navigate = useNavigate();
 
   return (
     <Page>
@@ -52,14 +56,14 @@ function Account() {
         <Toolbar sx={{ height: 100 }} />
         <Divider />
         <List>
-          <ListItemButton>
+          <ListItemButton onClick={() => navigate("add-new-item")}>
             <ListItemIcon>
               <AddIcon />
             </ListItemIcon>
             <ListItemText primary="Add new item" />
           </ListItemButton>
 
-          <ListItemButton>
+          <ListItemButton onClick={() => navigate("actual-items")}>
             <ListItemIcon>
               <FormatListBulletedIcon />
             </ListItemIcon>
@@ -95,6 +99,10 @@ function Account() {
           </ListItemButton>
         </List>
       </Drawer>
+      <Routes>
+        <Route path="add-new-item" element={<AddNewItem />} />
+        <Route path="actual-items" element={<ActualItems />} />
+      </Routes>
     </Page>
   );
 }
