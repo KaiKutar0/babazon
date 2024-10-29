@@ -2,6 +2,7 @@ import { Box, Button, Card, Divider, Stack, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { increment } from "../app/cartSlice";
+
 function Item({
   item,
 }: {

@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Page from "../components/Page";
 import data from "../data.json";
-import { Box, Button, Card, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import Item from "../components/Item";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { decrement, reset } from "../app/cartSlice";
+import { theme } from "../theme";
 
 function Cart() {
   const cart = useAppSelector((state) => state.cart.items);
@@ -68,9 +76,15 @@ function Tile({
   };
 }) {
   const dispatch = useAppDispatch();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
   return (
     <Card>
-      <Stack direction="row" padding="0% 2%" alignItems="center" spacing={2}>
+      <Stack
+        direction={matches ? "row" : "column"}
+        padding="0% 2%"
+        alignItems={matches ? "center" : ""}
+        spacing={2}
+      >
         <Box>
           <img src={item.image} height={80} width={80} />
         </Box>
@@ -85,11 +99,12 @@ function Tile({
             Price: {item.price} $
           </Typography>
         </Box>
-        <Box
-          sx={{ cursor: "pointer" }}
-          onClick={() => dispatch(decrement(item.id))}
-        >
-          <DeleteIcon color="error" fontSize="large" />
+        <Box sx={{ cursor: "pointer" }}>
+          <DeleteIcon
+            color="error"
+            fontSize="large"
+            onClick={() => dispatch(decrement(item.id))}
+          />
         </Box>
       </Stack>
     </Card>

@@ -1,7 +1,8 @@
-import { AppBar, Box, Typography } from "@mui/material";
-import React from "react";
+import { Box, Typography, useMediaQuery } from "@mui/material";
+import { theme } from "../theme";
 
 function Footer() {
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
   return (
     <Box
       sx={{
@@ -16,7 +17,7 @@ function Footer() {
         gap: 10,
       }}
     >
-      <Typography color="#FFFFFF" variant="h3">
+      <Typography color="#FFFFFF" variant={matches ? "h3" : "h4"}>
         Yurii Vasylchenko 2024
       </Typography>
     </Box>

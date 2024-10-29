@@ -10,6 +10,7 @@ import {
   Stack,
   TextField,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import comments from "../comments.json";
 import { useAppDispatch } from "../app/hooks";
@@ -23,11 +24,14 @@ function Details() {
   const { id } = useParams();
   const item = data.filter((i) => i.id.toString() === id?.replace(":", ""))[0];
   const dispatch = useAppDispatch();
-
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
   return (
     <Page title="Details">
       <Stack spacing={8} sx={{ padding: "2% 0%" }}>
-        <Stack direction="row" justifyContent="space-between">
+        <Stack
+          direction={matches ? "row" : "column"}
+          justifyContent="space-between"
+        >
           <Card sx={{ padding: "1.5%" }}>
             <Box sx={{ padding: "10px 0px" }}>
               <Typography variant="h3">{item.name}</Typography>
@@ -40,7 +44,7 @@ function Details() {
                 padding: "20px 0px",
               }}
             >
-              <img width={400} height={400} src={item.image} />
+              <img width="100%" src={item.image} />
             </Box>
             <Box>
               <Typography>Price: {item.price}</Typography>

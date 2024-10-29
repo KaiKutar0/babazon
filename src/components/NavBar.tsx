@@ -1,33 +1,44 @@
-import React, { useContext, useEffect, useState } from "react";
 import logo from "../img/logo.svg";
 import { useNavigate } from "react-router-dom";
 import {
   AppBar,
-  Autocomplete,
   Avatar,
   Badge,
   Box,
   Button,
+  Divider,
+  Drawer,
   IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
   Stack,
-  TextField,
+  SwipeableDrawer,
   Toolbar,
   Tooltip,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import data from "../data.json";
 import { useAppSelector } from "../app/hooks";
 import Search from "./Search";
+import { theme } from "../theme";
+import MenuIcon from "@mui/icons-material/Menu";
+import { SyntheticEvent, useState } from "react";
 
 function NavBar() {
   const navigate = useNavigate();
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const cartItems = useAppSelector((state) => state.cart.items.length);
 
   return (
     <Box flexGrow={1}>
       <AppBar
-        position="sticky"
+        position="static"
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
         <Toolbar>
@@ -45,43 +56,72 @@ function NavBar() {
             </Box>
 
             <Box display="flex" alignItems="center">
-              <Typography variant="h3">Babazon</Typography>
+              <Typography variant={matches ? "h3" : "h4"}>Babazon</Typography>
             </Box>
           </Box>
-          <Box flexGrow={1}></Box>
+          {matches ? (
+            <>
+              <Box flexGrow={1}></Box>
 
-          <Search data={data} />
+              <Search data={data} />
 
-          <Box flexGrow={1}></Box>
-          <Box>
-            <Stack direction="row" alignItems="center" spacing={2}>
-              <IconButton size="large" color="inherit">
-                <Badge
-                  color="secondary"
-                  badgeContent={cartItems}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                >
-                  <ShoppingCartIcon
-                    sx={{ cursor: "pointer" }}
-                    fontSize="large"
-                    onClick={() => navigate("/cart")}
-                  />
-                </Badge>
+              <Box flexGrow={1}></Box>
+              <Box>
+                <Stack direction="row" alignItems="center" spacing={2}>
+                  <IconButton size="large" color="inherit">
+                    <Badge
+                      color="secondary"
+                      badgeContent={cartItems}
+                      anchorOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                    >
+                      <ShoppingCartIcon
+                        sx={{ cursor: "pointer" }}
+                        fontSize="large"
+                        onClick={() => navigate("/cart")}
+                      />
+                    </Badge>
+                  </IconButton>
+                  <Button color="inherit" onClick={() => navigate("/log-in")}>
+                    Log In
+                  </Button>
+                  <Button color="inherit" onClick={() => navigate("/sign-up")}>
+                    Sign Up
+                  </Button>
+                  <Tooltip title="Guest">
+                    <Avatar />
+                  </Tooltip>
+                </Stack>
+              </Box>
+            </>
+          ) : (
+            <>
+              <Box flexGrow={1}></Box>
+              <IconButton color="inherit" onClick={() => setOpenDrawer(true)}>
+                <MenuIcon />
               </IconButton>
-              <Button color="inherit" onClick={() => navigate("/log-in")}>
-                Log In
-              </Button>
-              <Button color="inherit" onClick={() => navigate("/sign-up")}>
-                Sign Up
-              </Button>
-              <Tooltip title="Guest">
-                <Avatar />
-              </Tooltip>
-            </Stack>
-          </Box>
+              <SwipeableDrawer
+                anchor="top"
+                open={openDrawer}
+                onClose={() => setOpenDrawer(false)}
+                onOpen={() => setOpenDrawer(true)}
+              >
+                <Button color="inherit" onClick={() => navigate("/cart")}>
+                  Cart
+                </Button>
+                <Divider />
+                <Button color="inherit" onClick={() => navigate("/log-in")}>
+                  Log in
+                </Button>
+                <Divider />
+                <Button color="inherit" onClick={() => navigate("/sign-up")}>
+                  Sign up
+                </Button>
+              </SwipeableDrawer>
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </Box>

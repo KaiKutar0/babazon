@@ -15,11 +15,17 @@ function LogIn() {
 
   return (
     <Page>
-      <Box sx={{ padding: "5% 40%" }}>
-        <Card sx={{ padding: "5%" }}>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+      >
+        <Box height={80} />
+        <Card sx={{ padding: "2%", minWidth: "320px", maxWidth: "600px" }}>
           <Typography variant="h4">Authorization</Typography>
-          <Divider />
-          <Box sx={{ padding: "5% 5%" }}>
+          <Box height={20} />
+          <Box>
             <Stack direction="column" spacing={2}>
               <TextField label="email" />
               <TextField label="password" />

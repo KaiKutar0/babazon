@@ -16,18 +16,23 @@ function SignUp() {
   const navigate = useNavigate();
   return (
     <Page>
-      <Box sx={{ padding: "5% 20%" }}>
-        <Card sx={{ padding: "5%" }}>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+      >
+        <Card sx={{ padding: "2%", minWidth: "320px", maxWidth: "600px" }}>
           <Typography variant="h4">Registration</Typography>
-          <Divider />
           <Box sx={{ padding: "2% 5%" }}>
-            <Stack direction="row" spacing={2}>
+            <Stack spacing={2}>
               <Stack spacing={2}>
                 <TextField label="email" />
                 <TextField label="number" />
                 <TextField label="adress" />
               </Stack>
               <Box flex={1}></Box>
+              <Divider />
               <Stack spacing={2}>
                 <TextField label="password" />
                 <TextField label="repeat password" />
