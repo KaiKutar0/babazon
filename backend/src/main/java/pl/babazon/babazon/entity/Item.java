@@ -25,30 +25,34 @@ public class Item {
     User user;
 
     public String getName() {
-        return name;
+        return this.name;
     }
+
     public void setName(String name) {
         this.name = name;
 
-    }    
+    }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
 
     public String getImage() {
-        return image;
+        return this.image;
     }
+
     public void setImage(String image) {
         this.image = image;
     }
 
     public Double getPrice() {
-        return price;
+        return this.price;
     }
+
     public void setPrice(double price) {
         this.price = price;
     }

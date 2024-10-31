@@ -21,7 +21,7 @@ function Section({
       <Box>
         <Typography variant="h6">{title}</Typography>
       </Box>
-      <Stack direction="row" spacing={5}>
+      <Stack direction="row" spacing={5} justifyContent="center">
         {children}
       </Stack>
       <Pagination

@@ -45,16 +45,16 @@ function Account() {
           width: 200,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            position: "absolute",
+            zIndex: -1,
             width: 200,
+            position: "absolute",
             boxSizing: "border-box",
           },
         }}
         variant="permanent"
         anchor="left"
       >
-        <Toolbar sx={{ height: 100 }} />
-        <Divider />
+        <Toolbar sx={{ height: 80 }} />
         <List>
           <ListItemButton onClick={() => navigate("add-new-item")}>
             <ListItemIcon>
