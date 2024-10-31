@@ -19,7 +19,14 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import SettingsIcon from "@mui/icons-material/Settings";
 import axios from "axios";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { ActualItems, AddNewItem } from "../components/Account";
+import {
+  ActualItems,
+  AddNewItem,
+  DeliveryStatus,
+  History,
+  Payment,
+} from "../components/Account";
+import Setting from "../components/Account/Setting";
 
 function Account() {
   const [message, setMessage] = useState<string>("");
@@ -70,28 +77,28 @@ function Account() {
             <ListItemText primary="Actual items" />
           </ListItemButton>
 
-          <ListItemButton>
+          <ListItemButton onClick={() => navigate("history")}>
             <ListItemIcon>
               <HistoryIcon />
             </ListItemIcon>
             <ListItemText primary="History" />
           </ListItemButton>
 
-          <ListItemButton>
+          <ListItemButton onClick={() => navigate("delivery-status")}>
             <ListItemIcon>
               <LocalShippingIcon />
             </ListItemIcon>
             <ListItemText primary="Delivery status" />
           </ListItemButton>
 
-          <ListItemButton>
+          <ListItemButton onClick={() => navigate("payment")}>
             <ListItemIcon>
               <PaymentIcon />
             </ListItemIcon>
             <ListItemText primary="Payment" />
           </ListItemButton>
 
-          <ListItemButton>
+          <ListItemButton onClick={() => navigate("settings")}>
             <ListItemIcon>
               <SettingsIcon />
             </ListItemIcon>
@@ -102,6 +109,10 @@ function Account() {
       <Routes>
         <Route path="add-new-item" element={<AddNewItem />} />
         <Route path="actual-items" element={<ActualItems />} />
+        <Route path="history" element={<History />} />
+        <Route path="delivery-status" element={<DeliveryStatus />} />
+        <Route path="payment" element={<Payment />} />
+        <Route path="settings" element={<Setting />} />
       </Routes>
     </Page>
   );

@@ -1,7 +1,11 @@
 import React from "react";
 
 function DeliveryStatus() {
-  return <div>DeliveryStatus</div>;
+  return (
+    <div style={{ padding: "0 0 0 200px" }}>
+      <p>DeliveryStatus</p>
+    </div>
+  );
 }
 
 export default DeliveryStatus;
